@@ -1,46 +1,67 @@
 package application;
+
 import javafx.application.Application;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ColorPicker;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.SeparatorMenuItem;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        // Crear controles
-        Label fechaLabel = new Label("Selecciona una fecha:");
-        DatePicker datePicker = new DatePicker();
-        Label colorLabel = new Label("Selecciona un color:");
-        ColorPicker colorPicker = new ColorPicker();
-        Button botonConfirmar = new Button("Confirmar");
-        Label resultadoLabel = new Label("Resultado:");
+        // Crear la barra de menú principal
+        MenuBar menuBar = new MenuBar();
 
-        // Crear layout vertical (VBox)
-        VBox root = new VBox(10);
-        root.setPadding(new Insets(10));
-        root.setAlignment(Pos.CENTER);
+        // Crear menús principales
+        Menu archivoMenu = new Menu("Archivo");
+        Menu editarMenu = new Menu("Editar");
+        Menu ayudaMenu = new Menu("Ayuda");
 
-        // Agregar controles al layout
-        root.getChildren().addAll(fechaLabel, datePicker, colorLabel, colorPicker, botonConfirmar, resultadoLabel);
+        // Añadir elementos de menú (opciones) dentro de cada menú principal
+        archivoMenu.getItems().addAll(
+                new MenuItem("Abrir"),
+                new MenuItem("Guardar"),
+                new SeparatorMenuItem(),
+                new MenuItem("Salir")
+        );
 
-        // Acción al presionar el botón
-        botonConfirmar.setOnAction(e -> {
-            String fechaSeleccionada = datePicker.getValue().toString();
-            String colorSeleccionado = colorPicker.getValue().toString();
-            resultadoLabel.setText("Fecha seleccionada: " + fechaSeleccionada + "\nColor seleccionado: " + colorSeleccionado);
-            System.out.println("Fecha seleccionada: " + fechaSeleccionada + ", Color seleccionado: " + colorSeleccionado);
-        });
+        editarMenu.getItems().addAll(
+                new MenuItem("Copiar"),
+                new MenuItem("Pegar"),
+                new SeparatorMenuItem(),
+                new MenuItem("Eliminar")
+        );
 
-        // Crear escena y mostrarla
-        Scene scene = new Scene(root, 300, 250);
-        primaryStage.setTitle("Fecha y Color GUI");
+        ayudaMenu.getItems().addAll(
+                new MenuItem("Acerca de"),
+                new MenuItem("Ayuda en línea")
+        );
+
+        // Añadir menús principales a la barra de menú
+        menuBar.getMenus().addAll(archivoMenu, editarMenu, ayudaMenu);
+
+        // Definir acciones para cada elemento de menú
+        archivoMenu.getItems().get(0).setOnAction(e -> System.out.println("Abrir archivo"));
+        archivoMenu.getItems().get(1).setOnAction(e -> System.out.println("Guardar archivo"));
+        archivoMenu.getItems().get(3).setOnAction(e -> System.out.println("Salir de la aplicación"));
+
+        editarMenu.getItems().get(0).setOnAction(e -> System.out.println("Copiar texto"));
+        editarMenu.getItems().get(1).setOnAction(e -> System.out.println("Pegar texto"));
+        editarMenu.getItems().get(2).setOnAction(e -> System.out.println("Eliminar texto"));
+
+        ayudaMenu.getItems().get(0).setOnAction(e -> System.out.println("Acerca de la aplicación"));
+        ayudaMenu.getItems().get(1).setOnAction(e -> System.out.println("Ayuda en línea"));
+
+        // Crear un BorderPane para organizar la barra de menú en la parte superior de la ventana
+        BorderPane root = new BorderPane();
+        root.setTop(menuBar);
+
+        // Crear la escena y mostrar la ventana
+        Scene scene = new Scene(root, 400, 300);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
