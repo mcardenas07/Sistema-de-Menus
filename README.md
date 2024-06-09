@@ -1,8 +1,9 @@
-#PRACTICA SISTEMA DE MENUS
-###Captura del código
+**PRACTICA SISTEMA DE MENUS**
+
+**Captura del código**
 ![](https://i.ibb.co/ScmYGHx/3.png)
 
-###Lineas de codigo
+**Lineas de codigo**
 
 	package application;
 	import javafx.application.Application;
@@ -77,7 +78,7 @@
 	}
 
 
-####Explicación del codigo
+**Explicación del codigo**
 - **Creación de la barra de menú** 
 (MenuBar): Se crea una barra de menú que contendrá los menús principales.
 
@@ -100,5 +101,5 @@
 Se establece la escena en el Stage principal y se muestra la ventana.
 
 
-###Conclusión
+**Conclusión**
 Este código es un buen ejemplo para aprender a trabajar con menús en JavaFX y cómo asociar acciones básicas a los elementos de menú. Aquí se implementan los conceptos básicos necesarios para construir una interfaz gráfica de usuario simple pero funcional.
