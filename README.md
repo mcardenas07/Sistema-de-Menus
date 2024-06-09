@@ -102,4 +102,5 @@ Se establece la escena en el Stage principal y se muestra la ventana.
 
 
 **Conclusión**
+
 Este código es un buen ejemplo para aprender a trabajar con menús en JavaFX y cómo asociar acciones básicas a los elementos de menú. Aquí se implementan los conceptos básicos necesarios para construir una interfaz gráfica de usuario simple pero funcional.
